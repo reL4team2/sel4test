@@ -11,6 +11,9 @@ include(settings.cmake)
 project(sel4test C CXX ASM)
 
 find_package(seL4 REQUIRED)
+if(REL4_KERNEL)
+    find_package(reL4 REQUIRED)
+endif()
 find_package(elfloader-tool REQUIRED)
 
 # Set the roottask CNode size to be large enough for DTB, timer caps, etc
@@ -21,6 +24,9 @@ set(KernelRootCNodeSizeBits 13 CACHE INTERNAL "")
 # Set our custom domain schedule
 set(KernelDomainSchedule "${CMAKE_CURRENT_LIST_DIR}/domain_schedule.c" CACHE INTERNAL "")
 sel4_import_kernel()
+if(REL4_KERNEL)
+    rel4_import_kernel()
+endif()
 
 if((NOT Sel4testAllowSettingsOverride) AND (KernelArchARM OR KernelArchRiscV))
     # Elfloader settings that correspond to how Data61 sets its boards up.

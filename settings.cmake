@@ -12,6 +12,7 @@ list(
     APPEND
         CMAKE_MODULE_PATH
         ${project_dir}/kernel
+        ${project_dir}/rel4_kernel
         ${project_dir}/tools/seL4/cmake-tool/helpers/
         ${project_dir}/tools/seL4/elfloader-tool/
         ${project_modules}
