@@ -659,5 +659,7 @@ int main(void)
     test_assert_fatal(error == 0);
     test_assert_fatal(res == 0);
 
+
+	seL4_Shutdown();
     return 0;
 }
